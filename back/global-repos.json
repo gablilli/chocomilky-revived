@@ -17,6 +17,9 @@
     { "url": "https://ish.app/altstore.json" },
     { "url": "https://raw.githubusercontent.com/tapframe/NuvioStreaming/main/nuvio-source.json" },
     { "url": "https://raw.githubusercontent.com/LiveContainer/LiveContainer/refs/heads/main/apps.json" },
+    { "url": "https://balackburn.github.io/Apollo/apps.json" },
+    { "url": "https://repo.owo.network/" },
+    { "url": "https://raw.githubusercontent.com/AntonP29/AntonP29-Repo/refs/heads/main/repo.json" },
     { "url": "https://raw.githubusercontent.com/Balackburn/YTLitePlusAltstore/main/apps.json" },
     { "url": "https://altstore.oatmealdome.me/" },
     { "url": "https://raw.githubusercontent.com/arichornloverALT/arichornloveralt.github.io/main/apps2.json" },
@@ -34,6 +37,7 @@
     { "url": "https://qnblackcat.github.io/AltStore/apps.json" },
     { "url": "https://raw.githubusercontent.com/swaggyP36000/TrollStore-IPAs/main/apps_esign.json" },
     { "url": "https://raw.githubusercontent.com/Gliddd4/gliddd4-repo/refs/heads/main/app.json" },
+    { "url": "https://repo.chungchi365.com/repo.json" },
     { "url": "https://therealfoxster.github.io/altsource/apps.json" },
     { "url": "https://raw.githubusercontent.com/titouan336/Spotify-AltStoreRepo-mirror/refs/heads/main/source.json" }
   ]
