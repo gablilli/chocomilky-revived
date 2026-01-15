@@ -123,7 +123,6 @@ async function loadRepos() {
       `;
     }
     reposArea.innerHTML = out;
-    attachRepoHandlers();
   } catch (err) {
     console.error(err);
     reposArea.innerHTML = `<div class="loading-line">Failed to load libraries.</div>`;
@@ -131,17 +130,22 @@ async function loadRepos() {
 }
 
 // Handlers
-function attachRepoHandlers() {
-  document.querySelectorAll(".openBtn").forEach(btn => {
-    btn.onclick = () => openRepo(btn.dataset.url, btn.dataset.useProxy === "true");
-  });
-  document.querySelectorAll(".copyBtn").forEach(btn => {
-    btn.onclick = async () => {
-      try { await navigator.clipboard.writeText(btn.dataset.url); showToast("Copied URL"); } 
-      catch { alert("Copy failed"); }
-    };
-  });
-}
+reposArea.addEventListener("click", (e) => {
+  const btn = e.target.closest(".openBtn");
+  if (!btn) return;
+  const url = btn.dataset.url;
+  const useProxy = btn.dataset.useProxy === "true";
+  openRepo(url, useProxy);
+});
+
+// Event delegation per copiare URL
+reposArea.addEventListener("click", (e) => {
+  const btn = e.target.closest(".copyBtn");
+  if (!btn) return;
+  navigator.clipboard.writeText(btn.dataset.url)
+    .then(() => showToast("Copied URL"))
+    .catch(() => alert("Copy failed"));
+});
 
 async function openRepo(url, useProxy) {
   viewingRepoUrl = url;
