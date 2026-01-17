@@ -207,16 +207,20 @@ function renderApps(apps, append=false){
   if(!append) appsArea.innerHTML="";
 
   apps.forEach(app=>{
-    const latest=(app.versions && app.versions.length)? app.versions[0] : {};
+    const latest = (app.versions && app.versions.length) ? app.versions[0] : {};
     const version = latest.version || app.version || "";
     const desc = app.subtitle || app.localizedDescription || latest.localizedDescription || "";
     const downloadURL = app.downloadURL || latest.downloadURL || "#";
     const sizeBytes = latest.size || app.size || 0;
 
-    // Formattare dimensione in MB o KB
-    const sizeText = sizeBytes > 1024*1024 
-      ? (sizeBytes / (1024*1024)).toFixed(2) + " MB"
-      : (sizeBytes / 1024).toFixed(2) + " KB";
+    let sizeText = "Unknown size";
+    if(sizeBytes > 1024*1024){
+      sizeText = (sizeBytes / (1024*1024)).toFixed(2) + " MB";
+    } else if(sizeBytes > 1024){
+      sizeText = (sizeBytes / 1024).toFixed(2) + " KB";
+    } else if(sizeBytes > 0){
+      sizeText = sizeBytes + " B";
+    }
 
     const card = document.createElement("div");
     card.className = "card";
@@ -224,7 +228,10 @@ function renderApps(apps, append=false){
       <div class="icon"><img src="${app.iconURL||""}" alt=""></div>
       <div class="title">${app.name||""}</div>
       <div class="subtitle">${desc}</div>
-      <div class="version">${version ? "Version " + version : ""}${version && sizeText ? " • " + sizeText : sizeText}</div>
+      <div class="meta" style="display:flex;gap:6px;font-size:12px;color:#aaa;margin-bottom:12px;flex-wrap:wrap;">
+        ${version ? `<span class="version">Version ${version}</span>` : ""}
+        <span class="size">${sizeText}</span>
+      </div>
       <a class="download" href="${downloadURL}" target="_blank" rel="noopener">Download</a>
     `;
     appsArea.appendChild(card);
