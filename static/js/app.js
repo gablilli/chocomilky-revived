@@ -240,9 +240,11 @@ searchInput.addEventListener("input",()=>{
   renderApps(filtered);
 });
 
-(async ()=>{
-  for(const r of getUserRepos()){
-    const repo=await fetchUserRepo(r.url,r.useProxy);
-    if(repo) renderRepoCard(repo,r.url,r.useProxy,true);
-  }
-})();
+loadRepos().then(() => {
+  (async ()=>{
+    for(const r of getUserRepos()){
+      const repo=await fetchUserRepo(r.url,r.useProxy);
+      if(repo) renderRepoCard(repo,r.url,r.useProxy,true);
+    }
+  })();
+});
