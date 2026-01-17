@@ -39,7 +39,7 @@ const loadAllRepos = async (repos) => {
 async function loadRepos() {
   reposArea.innerHTML = `<div class="loading-line">Loading libraries…</div>`;
   try {
-    const res = await fetch("/chocomilky-revived/back/global-repos.json");
+    const res = await fetch("https://gablilli.github.io/chocomilky-revived/back/global-repos.json");
     const globals = await res.json();
     if (!globals.repos || globals.repos.length === 0) {
       reposArea.innerHTML = `<div class="loading-line">No libraries loaded.</div>`;
