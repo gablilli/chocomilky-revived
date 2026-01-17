@@ -46,6 +46,8 @@ async function loadRepos() {
     const reposData = await loadAllRepos(globals.repos);
     allAppsIndex = [];
     reposData.forEach(indexRepoApps);
+    renderApps(currentApps.slice(0, 50));
+    currentApps = allAppsIndex.slice();
     let out = "";
     for (let i = 0; i < reposData.length; i++) {
       const data = reposData[i];
@@ -365,3 +367,4 @@ loadRepos().then(() => {
     }
   })();
 });
+
