@@ -145,29 +145,44 @@ async function openRepo(url,useProxy){
   }
 }
 
+// follow the current filter
+function renderNextBatch() {
+  const batchSize = 20;
+  const nextApps = filteredApps.slice(loaded, loaded + batchSize);
+  renderApps(nextApps, true);
+  loaded += nextApps.length;
+}
+
 // render apps cards
-function renderApps(apps,append=false){
-  if(!apps||apps.length===0){if(!append) appsArea.innerHTML=`<div class="loading-line">No apps found.</div>`; return;}
-  if(!append) appsArea.innerHTML="";
-  apps.forEach(app=>{
-    const latest=(app.versions&&app.versions.length)?app.versions[0]:{};
-    const version=latest.version||app.version||"";
-    const desc=app.subtitle||app.localizedDescription||latest.localizedDescription||"";
-    const downloadURL=app.downloadURL||latest.downloadURL||"#";
-    const sizeBytes=latest.size||app.size||0;
-    let sizeText="Unknown";
-    if(sizeBytes>1024*1024){sizeText=(sizeBytes/(1024*1024)).toFixed(2)+" MB";}
-    else if(sizeBytes>1024){sizeText=(sizeBytes/1024).toFixed(2)+" KB";}
-    else if(sizeBytes>0){sizeText=sizeBytes+" B";}
-    const card=document.createElement("div");
-    card.className="card";
-    card.innerHTML=`
-      <div class="icon"><img src="${app.iconURL||""}" alt=""></div>
-      <div class="title">${app.name||""}</div>
+function renderApps(apps, append = false, showRepo = false) {
+  if (!apps || apps.length === 0) {
+    if (!append) appsArea.innerHTML = `<div class="loading-line">No apps found.</div>`;
+    return;
+  }
+  if (!append) appsArea.innerHTML = "";
+
+  apps.forEach(app => {
+    const latest = (app.versions && app.versions.length) ? app.versions[0] : {};
+    const version = latest.version || app.version || "";
+    const desc = app.subtitle || app.localizedDescription || latest.localizedDescription || "";
+    const downloadURL = app.downloadURL || latest.downloadURL || "#";
+    const sizeBytes = latest.size || app.size || 0;
+    let sizeText = "Unknown";
+    if (sizeBytes > 1024*1024) sizeText = (sizeBytes/(1024*1024)).toFixed(2)+" MB";
+    else if (sizeBytes > 1024) sizeText = (sizeBytes/1024).toFixed(2)+" KB";
+    else if (sizeBytes > 0) sizeText = sizeBytes+" B";
+
+    const repoNameHtml = showRepo && app.__repoName ? `<div class="repo-name-home">${app.__repoName}</div>` : "";
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <div class="icon"><img loading="lazy" src="${app.iconURL || ''}" alt=""></div>
+      <div class="title">${app.name || ""}</div>
       <div class="meta">
-        ${version?`<span class="version">v${version}</span>`:""}
+        ${version ? `<span class="version">v${version}</span>` : ""}
         <span class="size">${sizeText}</span>
       </div>
+      ${repoNameHtml}
       <div class="subtitle">${desc}</div>
       <a class="download" href="${downloadURL}" target="_blank" rel="noopener">Download</a>
     `;
@@ -216,25 +231,19 @@ function indexRepoApps(repo) {
   });
 }
 
+let searchTimeout;
 searchInput.addEventListener("input", () => {
-  const q = searchInput.value.toLowerCase();
-  if (!q) {
-    renderApps(currentApps.slice(0, 50));
-    return;
-  }
-  const filtered = (currentApps || []).filter(app => {
-    const latest = (app.versions && app.versions.length) ? app.versions[0] : {};
-    const fields = [
-      app.name,
-      app.subtitle,
-      app.localizedDescription,
-      app.developerName,
-      app.bundleIdentifier,
-      latest.localizedDescription
-    ];
-    return fields.some(f => typeof f === 'string' && f.toLowerCase().includes(q));
-  });
-  renderApps(filtered.slice(0, 50));
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(() => {
+    const q = searchInput.value.toLowerCase();
+    if (!q) { renderApps(currentApps.slice(0,50)); return; }
+    const filtered = (currentApps || []).filter(app => {
+      const latest = (app.versions && app.versions.length) ? app.versions[0] : {};
+      const fields = [app.name, app.subtitle, app.localizedDescription, app.developerName, app.bundleIdentifier, latest.localizedDescription];
+      return fields.some(f => f && f.toLowerCase().includes(q));
+    });
+    renderApps(filtered.slice(0,50));
+  }, 250);
 });
 
 // import stuff
