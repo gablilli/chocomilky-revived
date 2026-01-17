@@ -1,21 +1,26 @@
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&height=170&text=chocomilky%20revived&fontSize=38&fontColor=fff7ed&color=0:4e342e,50:6d4c41,100:d7ccc8&animation=fadeIn" />
+  <img src="https://img.shields.io/github/stars/gablilli/chocomilky-revived?style=for-the-badge" alt="GitHub stars" />
+  <img src="https://img.shields.io/github/forks/gablilli/chocomilky-revived?style=for-the-badge" alt="GitHub forks" />
+  <img src="https://img.shields.io/github/issues-pr/gablilli/chocomilky-revived?style=for-the-badge" alt="Open PRs" />
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/github/stars/gablilli/chocomilky-revived?style=for-the-badge" />
-  <img src="https://img.shields.io/github/forks/gablilli/chocomilky-revived?style=for-the-badge" />
-  <img src="https://img.shields.io/github/issues-pr/gablilli/chocomilky-revived?style=for-the-badge" />
+  <img src="static/icons/logo1024x1024.png" alt="Choco Milky Logo" width="200"/>
 </p>
 
-# 🍫 chocomilky-revived
+<h1 align="center">chocomilkyX Library</h1>
 
-**chocomilky-revived** is a simple static web project for downloading ipas from your favourite repos.
-the project is designed to be lightweight, easy to customize, and ready for github pages.
-your favourite library, with the repos you need, all in one place.
 
-🔗 **live**  
-https://gablilli.github.io/chocomilky-revived/
+<p align="center">
+  The chocomilkyX library is a simple static web project for downloading IPAs from your favourite repos.<br/>
+  The project is designed to be lightweight, easy to customize, and ready for GitHub Pages.<br/>
+  Your favourite library, with the repos you need, all in one place.
+</p>
+
+<p align="center">
+  🔗 <strong>Live:</strong> <a href="https://gablilli.github.io/chocomilkyx/">https://gablilli.github.io/chocomilkyx/</a>
+</p>
+
 
 ---
 
@@ -24,13 +29,15 @@ https://gablilli.github.io/chocomilky-revived/
 - static html webpage  
 - ready for github pages  
 - minimal and lightweight  
-- easy to extend and customize  
+- personal custom repos
 
 ---
 
-## i want my repos!
+## I want to add some repos to the library
 
 want to add your favorite repo to chocomilky?
+first of all, thank you!
+to proceed:
 
 1. fork this repository
 2. add your repo as a string (see example below)
@@ -48,11 +55,6 @@ add an entry like this to the repos json file:
 ```
 
 that’s it 🍫
-
-### i don't want to open a pr
-
-private repo submission is coming soon,  
-so stay connected 👀
 
 ## i want to selfhost it - 🚀 getting started
 
@@ -73,27 +75,16 @@ npx http-server .
 ```
 
 ---
-
-## 📁 project structure
-
-```
-chocomilky-revived/
-├── .github/        # github workflows to deploy on pages
-├── index.html     # main page
-├── back/        # here is stored the json with the repos
-├── readme.md
-└── license
-```
+## about chocomilkyv2
+ChocoMilkyV2 was the original version of this project, created by chocomilky.  
+chocomilkyX continues and updates it with new features, improvements, and bug fixes, while making the library free and opensource.
+This project is a **revived version**, maintaining compatibility with the original repos and adding enhancements.
 
 ---
 
 ## 📄 license
 
-this project is licensed under the **mit license**.
+this project is licensed under the **gpl v3 license**.
 see the `license` file for details.
 
----
 
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:4e342e,50:6d4c41,100:d7ccc8&height=120&section=footer" />
-</p>
