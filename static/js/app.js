@@ -93,7 +93,7 @@ function renderRepoCard(repoData,repoUrl,useProxy=false,isUserRepo=true){
   const first=repoData.apps[0]||{};
   const icon=repoData.iconURL||first.iconURL||"";
   const name=repoData.name||first.name||"Unnamed Repo";
-  const desc = data.description || first.subtitle || first.localizedDescription || "";
+  const desc = repoData.description || first.subtitle || first.localizedDescription || "";
   const div=document.createElement("div");
   div.className="repo-card";
   div.dataset.url=repoUrl;
