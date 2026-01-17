@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="https://img.shields.io/github/stars/gablilli/chocomilky-revived?style=for-the-badge" alt="GitHub stars" />
-  <img src="https://img.shields.io/github/forks/gablilli/chocomilky-revived?style=for-the-badge" alt="GitHub forks" />
-  <img src="https://img.shields.io/github/issues-pr/gablilli/chocomilky-revived?style=for-the-badge" alt="Open PRs" />
+  <img src="https://img.shields.io/github/stars/gablilli/chocomilkyX?style=for-the-badge" alt="GitHub stars" />
+  <img src="https://img.shields.io/github/forks/gablilli/chocomilkyX?style=for-the-badge" alt="GitHub forks" />
+  <img src="https://img.shields.io/github/issues-pr/gablilli/chocomilkyX?style=for-the-badge" alt="Open PRs" />
 </p>
 
 <p align="center">
-  <img src="static/icons/logo1024x1024.png" alt="Choco Milky Logo" width="200"/>
+  <img src="static/icons/logo1024x1024.png" alt="Choco MilkyX Logo" width="200"/>
 </p>
 
 <h1 align="center">chocomilkyX Library</h1>
@@ -18,7 +18,7 @@
 </p>
 
 <p align="center">
-  🔗 <strong>Live:</strong> <a href="https://gablilli.github.io/chocomilkyx/">https://gablilli.github.io/chocomilkyx/</a>
+  🔗 <strong>Live:</strong> <a href="https://gablilli.github.io/chocomilkyX/">https://gablilli.github.io/chocomilkyX/</a>
 </p>
 
 
@@ -61,8 +61,8 @@ that’s it 🍫
 ### clone the repository
 
 ```bash
-git clone https://github.com/gablilli/chocomilky-revived.git
-cd chocomilky-revived
+git clone https://github.com/gablilli/chocomilkyX.git
+cd chocomilkyX
 ````
 
 ### run locally
